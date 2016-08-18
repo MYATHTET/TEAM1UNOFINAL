@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <title>UNO Game Start</title>
+        <link href="libs/chui/chui-ios-3.9.2.css" rel="stylesheet" />
+          <script src="libs/handlebars-v4.0.5.js"></script>
+        <script src="libs/jquery-3.1.0.js"></script>
+        <script src="js/gameview.js"></script>
+          <script src="js/removeDeck.js"></script>
+        <script src="libs/chui/chui-3.9.2.js"></script>
+
+        <script type="text/javascript">
+            
+        </script>
+        
+        <script>
+            $(function () {
+                $('#discard').on("singletap", "img", function () {
+                    $(this).addClass('top').removeClass('bottom');
+                    $(this).siblings().removeClass('top').addClass('bottom');
+                });
+
+                $("#droppable").droppable({
+                    accept: ".peppable3",
+                    classes: {
+                        "ui-droppable-active" : "ui-state-active",
+                        "ui-droppable-hover" : "ui-state-hover"
+                    },
+                    drop: function (event, ui) {
+                        ui.helper.remove();
+                        deleteMe = true;
+
+                        alert("Dropped");
+
+                        ui.draggable.remove();
+                    }
+                });
+            });
+        </script>
+        
+        <style>
+            #desk{
+                float: left;
+                width: 170px;
+            }
+
+            #discard{
+                float: left;
+                width: 170px;
+            }
+
+            .peppable2{ 
+                position: absolute; 
+               
+            }
+
+            .peppable3{ 
+                position: absolute; 
+              
+            }
+            
+            .user-img{
+                display: block;
+            }
+
+            .user{
+                width: 200px;
+                height: auto;
+            }
+
+            .top {
+                z-index: 100 !important; 
+                position: relative;
+            }
+
+            .bottom {
+                z-index: 10 !important; 
+                position: relative;
+            }
+
+        </style>
+
+    </head>
+
+    <nav>
+        <h1>Create Game</h1>
+    </nav>
+    <article id="new-game">
+        <section>
+            <ul class="list" id="game-name">
+                <li>
+                    Game Title : 
+                    <input type="text" name="gamename" placeholder= "Type Game Name" id="gname" />
+                </li>
+                <li>
+                    <button type="submit" id="BtnCreate" >Create New Game</button>
+                </li>
+            </ul>     
+        </section>
+    </article>
+
+    <nav>
+        <h1>Game List</h1>
+    </nav>
+    <article id="game-list">
+        <section>
+            <ul class="list" id="listgame">
+                <li>
+                    Game ID : 
+                    <span id="createdgameid"></span>
+
+                </li>
+                <li>
+                    Game Name : 
+                    <span id="createdgname"></span>
+                </li>
+                <li>
+                    <div id="chatarea"></div>
+                </li>
+                <li>
+                    <button type="submit" name="start" id="BtnStart">Start Game</button>
+                </li>
+            </ul>   
+        </section>
+    </article>
+
+    <nav>
+        <h1>Players List</h1>
+    </nav>
+    <article id="listplayer">
+        <section>
+
+            <ul class="list" id="playerlists">
+                 <li id="droppable" class="ui-widget-header">
+                        
+                    </li>
+                </ul>
+<!--            <p id="discard">
+
+            </p>
+            <div id="deck">
+
+            </div>-->
+                <div id="discard">
+                    
+                </div>
+                
+                <div id="desk">
+                    
+                </div>
+        </section>
+    </article>
+</body>
+</html>
